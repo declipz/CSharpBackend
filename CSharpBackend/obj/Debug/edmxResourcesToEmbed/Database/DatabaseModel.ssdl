@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DatabaseModel.Store" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="brands">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="platform_id" Type="int" Nullable="false" />
+    <Property Name="brand_name" Type="nchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cart">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="device_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="devices">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="brand_id" Type="int" Nullable="false" />
+    <Property Name="name" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="cpu" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="ram" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="price" Type="int" Nullable="false" />
+    <Property Name="description" Type="ntext" Nullable="false" />
+  </EntityType>
+  <EntityType Name="news">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nchar" MaxLength="256" Nullable="false" />
+    <Property Name="description" Type="ntext" Nullable="false" />
+    <Property Name="date" Type="datetime" Nullable="false" />
+    <Property Name="device_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="operating_systems">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="platform_name" Type="nchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="orders">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="device_id" Type="int" Nullable="false" />
+    <Property Name="date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pictures">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="device_id" Type="int" Nullable="false" />
+    <Property Name="url" Type="nchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="email" Type="nchar" MaxLength="256" Nullable="false" />
+    <Property Name="password" Type="nchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <Association Name="brands-devices_relation">
+    <End Role="brands" Type="Self.brands" Multiplicity="1" />
+    <End Role="devices" Type="Self.devices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="brands">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="devices">
+        <PropertyRef Name="brand_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="devices-cart_relation">
+    <End Role="devices" Type="Self.devices" Multiplicity="1" />
+    <End Role="cart" Type="Self.cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="devices">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cart">
+        <PropertyRef Name="device_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="devices-news_relation">
+    <End Role="devices" Type="Self.devices" Multiplicity="1" />
+    <End Role="news" Type="Self.news" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="devices">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="news">
+        <PropertyRef Name="device_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="devices-orders_relation">
+    <End Role="devices" Type="Self.devices" Multiplicity="1" />
+    <End Role="orders" Type="Self.orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="devices">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="device_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="devices-pictures_relation">
+    <End Role="devices" Type="Self.devices" Multiplicity="1" />
+    <End Role="pictures" Type="Self.pictures" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="devices">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="pictures">
+        <PropertyRef Name="device_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="platforms-brands_relation">
+    <End Role="operating_systems" Type="Self.operating_systems" Multiplicity="1" />
+    <End Role="brands" Type="Self.brands" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="operating_systems">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="brands">
+        <PropertyRef Name="platform_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="users-cart_relation">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="cart" Type="Self.cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cart">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="users-orders_relation">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="orders" Type="Self.orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DatabaseModelStoreContainer">
+    <EntitySet Name="brands" EntityType="Self.brands" store:Type="Tables" />
+    <EntitySet Name="cart" EntityType="Self.cart" store:Type="Tables" />
+    <EntitySet Name="devices" EntityType="Self.devices" store:Type="Tables" />
+    <EntitySet Name="news" EntityType="Self.news" store:Type="Tables" />
+    <EntitySet Name="operating_systems" EntityType="Self.operating_systems" store:Type="Tables" />
+    <EntitySet Name="orders" EntityType="Self.orders" store:Type="Tables" />
+    <EntitySet Name="pictures" EntityType="Self.pictures" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" store:Type="Tables" />
+    <AssociationSet Name="brands-devices_relation" Association="Self.brands-devices_relation">
+      <End Role="brands" EntitySet="brands" />
+      <End Role="devices" EntitySet="devices" />
+    </AssociationSet>
+    <AssociationSet Name="devices-cart_relation" Association="Self.devices-cart_relation">
+      <End Role="devices" EntitySet="devices" />
+      <End Role="cart" EntitySet="cart" />
+    </AssociationSet>
+    <AssociationSet Name="devices-news_relation" Association="Self.devices-news_relation">
+      <End Role="devices" EntitySet="devices" />
+      <End Role="news" EntitySet="news" />
+    </AssociationSet>
+    <AssociationSet Name="devices-orders_relation" Association="Self.devices-orders_relation">
+      <End Role="devices" EntitySet="devices" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="devices-pictures_relation" Association="Self.devices-pictures_relation">
+      <End Role="devices" EntitySet="devices" />
+      <End Role="pictures" EntitySet="pictures" />
+    </AssociationSet>
+    <AssociationSet Name="platforms-brands_relation" Association="Self.platforms-brands_relation">
+      <End Role="operating_systems" EntitySet="operating_systems" />
+      <End Role="brands" EntitySet="brands" />
+    </AssociationSet>
+    <AssociationSet Name="users-cart_relation" Association="Self.users-cart_relation">
+      <End Role="users" EntitySet="users" />
+      <End Role="cart" EntitySet="cart" />
+    </AssociationSet>
+    <AssociationSet Name="users-orders_relation" Association="Self.users-orders_relation">
+      <End Role="users" EntitySet="users" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

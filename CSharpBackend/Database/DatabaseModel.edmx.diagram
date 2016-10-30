@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8ec3d1e51b2a47f69dc131906e57a229" Name="Diagram1">
+        <EntityTypeShape EntityType="DatabaseModel.brand" Width="1.5" PointX="7.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.cart" Width="1.5" PointX="4.125" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.device" PointX="5.5" PointY="5.625" Width="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.news" Width="1.5" PointX="3.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.operating_systems" Width="1.5" PointX="7.875" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.order" Width="1.5" PointX="6.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.picture" Width="1.5" PointX="3.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.user" Width="1.5" PointX="5.375" PointY="0.5" IsExpanded="true" />
+        <AssociationConnector ManuallyRouted="false" Association="DatabaseModel.brands_devices_relation" />
+        <AssociationConnector Association="DatabaseModel.platforms_brands_relation" ManuallyRouted="false" />
+        <AssociationConnector ManuallyRouted="false" Association="DatabaseModel.devices_cart_relation" />
+        <AssociationConnector Association="DatabaseModel.users_cart_relation" ManuallyRouted="false" />
+        <AssociationConnector ManuallyRouted="false" Association="DatabaseModel.devices_news_relation" />
+        <AssociationConnector ManuallyRouted="false" Association="DatabaseModel.devices_orders_relation" />
+        <AssociationConnector ManuallyRouted="false" Association="DatabaseModel.devices_pictures_relation" />
+        <AssociationConnector Association="DatabaseModel.users_orders_relation" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
