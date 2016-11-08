@@ -122,24 +122,16 @@ namespace CSharpBackend.Models
         }
     }
 
-    //seem to be removed
-    public class DeviceBlank
+    public class Picture
     {
-        [Required]
         public int id { get; set; }
-        [Required]
-        public int brand_id { get; set; }
-        [Required]
-        public int platform_id { get; set; }
-        [Required]
-        public string name { get; set; }
-        [Required]
-        public string cpu { get; set; }
-        [Required]
-        public string ram { get; set; }
-        [Required]
-        public int price { get; set; }
-        [Required]
-        public string description { get; set; }
+        public int device_id { get; set; }
+        public string url { get; set; }
+        public Picture(int id, int device_id, string url)
+        {
+            this.id = id;
+            this.device_id = device_id;
+            this.url = url;
+        }
     }
 }
