@@ -72,6 +72,8 @@ namespace CSharpBackend.Controllers
             {
                 cartList.Add(new CartItem(cart.Id, cart.device_id, cart.user_id));
             }
+            if (userID != null)
+                return Ok(cartList.Where(x => x.user_id.ToString() == userID).ToList<CartItem>());
 
             return Ok(cartList);
         }

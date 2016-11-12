@@ -11,7 +11,7 @@ namespace CSharpBackend.Controllers
 {
     public class PictureController : ApiController
     {
-        [System.Web.Http.Route("pictures")]
+        [System.Web.Http.Route("picture")]
         [System.Web.Http.AcceptVerbs("GET")]
         public IHttpActionResult pictureGet()
         {
@@ -26,7 +26,7 @@ namespace CSharpBackend.Controllers
             List<Picture> pictures = new List<Models.Picture>();
             foreach(Database.picture picture in db.pictures)
             {
-                pictures.Add(new Picture(picture.Id, picture.device_id, picture.url));
+                pictures.Add(new Picture(picture.Id, picture.device_id, picture.url.Trim()));
             }
             IEnumerable<string> deviceValues;
             if (Request.Headers.TryGetValues("device_id", out deviceValues))
