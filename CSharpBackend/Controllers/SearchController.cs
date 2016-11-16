@@ -36,14 +36,15 @@ namespace CSharpBackend.Controllers
                 }
                 devices.Add(new Device(device.Id, device.brand_id, device.brand.platform_id, 
                     device.name.Trim(), device.cpu.Trim(), device.ram.Trim(), 
-                    device.price, device.description.Trim()));
+                    device.price, device.description.Trim(), device.screen_size.Trim(),
+                    device.battery_capacity.Trim(), device.weight.Trim(), device.flash_memory.Trim()));
             }
 
             IEnumerable<string> platformValues;
             if(Request.Headers.TryGetValues("platform_id", out platformValues))
             {
                 var platformID = Request.Headers.GetValues("platform_id").FirstOrDefault();
-                foreach(Device device in devices.ToList()) //actually wtf, but it works
+                foreach(Device device in devices.ToList())
                 {
                     if (device.platform_id.ToString().Trim() != platformID.Trim())
                         devices.Remove(device);
@@ -54,7 +55,7 @@ namespace CSharpBackend.Controllers
             if (Request.Headers.TryGetValues("brand_id", out brandValues))
             {
                 var brandID = Request.Headers.GetValues("brand_id").FirstOrDefault();
-                foreach (Device device in devices.ToList()) //actually wtf, but it works
+                foreach (Device device in devices.ToList())
                 {
                     if (device.brand_id.ToString().Trim() != brandID)
                         devices.Remove(device);

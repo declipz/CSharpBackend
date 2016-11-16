@@ -30,6 +30,10 @@ namespace CSharpBackend.Database
         public string ram { get; set; }
         public int price { get; set; }
         public string description { get; set; }
+        public string screen_size { get; set; }
+        public string battery_capacity { get; set; }
+        public string weight { get; set; }
+        public string flash_memory { get; set; }
     
         public virtual brand brand { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

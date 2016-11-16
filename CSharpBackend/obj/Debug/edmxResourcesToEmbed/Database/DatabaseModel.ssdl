@@ -27,6 +27,10 @@
     <Property Name="ram" Type="nchar" MaxLength="100" Nullable="false" />
     <Property Name="price" Type="int" Nullable="false" />
     <Property Name="description" Type="ntext" Nullable="false" />
+    <Property Name="screen_size" Type="nvarchar" MaxLength="100" />
+    <Property Name="battery_capacity" Type="nvarchar" MaxLength="25" />
+    <Property Name="weight" Type="nvarchar" MaxLength="25" />
+    <Property Name="flash_memory" Type="nvarchar" MaxLength="25" />
   </EntityType>
   <EntityType Name="news">
     <Key>

@@ -32,6 +32,10 @@
           <Property Name="ram" Type="nchar" MaxLength="100" Nullable="false" />
           <Property Name="price" Type="int" Nullable="false" />
           <Property Name="description" Type="ntext" Nullable="false" />
+          <Property Name="screen_size" Type="nvarchar" MaxLength="100" />
+          <Property Name="battery_capacity" Type="nvarchar" MaxLength="25" />
+          <Property Name="weight" Type="nvarchar" MaxLength="25" />
+          <Property Name="flash_memory" Type="nvarchar" MaxLength="25" />
         </EntityType>
         <EntityType Name="news">
           <Key>
@@ -253,6 +257,10 @@
           <NavigationProperty Name="news" Relationship="Self.devices_news_relation" FromRole="devices" ToRole="news" />
           <NavigationProperty Name="orders" Relationship="Self.devices_orders_relation" FromRole="devices" ToRole="orders" />
           <NavigationProperty Name="pictures" Relationship="Self.devices_pictures_relation" FromRole="devices" ToRole="pictures" />
+          <Property Name="screen_size" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="battery_capacity" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="weight" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="flash_memory" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="news">
           <Key>
@@ -468,6 +476,10 @@
           <EntitySetMapping Name="devices">
             <EntityTypeMapping TypeName="DatabaseModel.device">
               <MappingFragment StoreEntitySet="devices">
+                <ScalarProperty Name="flash_memory" ColumnName="flash_memory" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="battery_capacity" ColumnName="battery_capacity" />
+                <ScalarProperty Name="screen_size" ColumnName="screen_size" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="brand_id" ColumnName="brand_id" />
                 <ScalarProperty Name="name" ColumnName="name" />

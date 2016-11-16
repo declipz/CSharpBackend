@@ -36,6 +36,10 @@
     <NavigationProperty Name="news" Relationship="Self.devices_news_relation" FromRole="devices" ToRole="news" />
     <NavigationProperty Name="orders" Relationship="Self.devices_orders_relation" FromRole="devices" ToRole="orders" />
     <NavigationProperty Name="pictures" Relationship="Self.devices_pictures_relation" FromRole="devices" ToRole="pictures" />
+    <Property Name="screen_size" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="battery_capacity" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="weight" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="flash_memory" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="news">
     <Key>

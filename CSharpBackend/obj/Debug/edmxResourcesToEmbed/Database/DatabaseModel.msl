@@ -22,6 +22,10 @@
     <EntitySetMapping Name="devices">
       <EntityTypeMapping TypeName="DatabaseModel.device">
         <MappingFragment StoreEntitySet="devices">
+          <ScalarProperty Name="flash_memory" ColumnName="flash_memory" />
+          <ScalarProperty Name="weight" ColumnName="weight" />
+          <ScalarProperty Name="battery_capacity" ColumnName="battery_capacity" />
+          <ScalarProperty Name="screen_size" ColumnName="screen_size" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="brand_id" ColumnName="brand_id" />
           <ScalarProperty Name="name" ColumnName="name" />

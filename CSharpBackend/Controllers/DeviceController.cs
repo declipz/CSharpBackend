@@ -73,7 +73,8 @@ namespace CSharpBackend.Controllers
             {
                 devices.Add(new Models.Device(device.Id, device.brand_id, device.brand.platform_id,
                     device.name.Trim(), device.cpu.Trim(), device.ram.Trim(),
-                    device.price, device.description.Trim()));
+                    device.price, device.description.Trim(), device.screen_size.Trim(),
+                    device.battery_capacity.Trim(), device.weight.Trim(), device.flash_memory.Trim()));
             }
 
             IEnumerable<string> brandValues;

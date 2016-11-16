@@ -11,6 +11,7 @@ namespace CSharpBackend.Models
 
         
     }
+
     public class Error
     {
         public Error(int code, string message)
@@ -71,8 +72,15 @@ namespace CSharpBackend.Models
         public string ram { get; set; }
         public int price { get; set; }
         public string description { get; set; }
+        public string screen_size { get; set; }
+        public string battery_capacity { get; set; }
+        public string weight { get; set; }
+        public string flash_memory { get; set; }
 
-        public Device(int id, int brand_id, int platform_id, string name, string cpu, string ram, int price, string description)
+        public Device(int id, int brand_id, int platform_id, 
+            string name, string cpu, string ram, int price, 
+            string description, string screen_size, string battery_capacity,
+            string weight, string flash_memory)
         {
             this.id = id;
             this.brand_id = brand_id;
@@ -82,6 +90,10 @@ namespace CSharpBackend.Models
             this.ram = ram;
             this.price = price;
             this.description = description;
+            this.screen_size = screen_size;
+            this.battery_capacity = battery_capacity;
+            this.weight = weight;
+            this.flash_memory = flash_memory;
         }
     }
 
@@ -104,6 +116,24 @@ namespace CSharpBackend.Models
             this.id = id;
             this.device_id = device_id;
             this.user_id = user_id;
+        }
+    }
+
+    public class NewsItem
+    {
+        public int id { get; set; }
+        public string title { get; set; }
+        public string description { get; set; }
+        public DateTime date { get; set; }
+        public int device_id { get; set; }
+
+        public NewsItem(int id, string title, string description, DateTime date, int device_id)
+        {
+            this.id = id;
+            this.title = title;
+            this.description = description;
+            this.date = date;
+            this.device_id = device_id;
         }
     }
 
